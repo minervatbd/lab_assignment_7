@@ -29,9 +29,9 @@ int main() {
     BubbleSort(array2);
 
     printf("array1 Selection Sort:\n");
-    //SelectionSort(array1);
-    printf("array1 Selection Sort:\n");
-    //SelectionSort(array2);
+    SelectionSort(array1);
+    printf("array2 Selection Sort:\n");
+    SelectionSort(array2);
     
 
 }
@@ -54,8 +54,10 @@ void BubbleSort(int array[]) {
                 
                 // swap swap counter array, and add one for the incrementation
                 temp = swaps[y];
-                swaps[y] = swaps[y+1] + 1;
-                swaps[y+1] = temp + 1;
+                swaps[y] = swaps[y+1];
+                swaps[y+1] = temp;
+                swaps[y]++;
+                swaps[y+1]++;
                 
                 // finally, increment total swap count
                 totalSwaps++;
@@ -70,7 +72,31 @@ void SelectionSort(int array[]) {
     int totalSwaps = 0;
     int swaps[] = {0,0,0,0,0,0,0,0,0};
 
+    int x, y, min, temp;
+    for (x = 0; x < 8; x++) {
+        // find the minimum unsorted value in the current array
+        min = x;
+        for (y = x+1; y < 9; y++) {
+            if (array[y] < array[min]) {
+                min = y;
+            }
+        }
+        // swap the array elements themselves
+        temp = array[x];
+        array[x] = array[min];
+        array[min] = temp;
 
+        // swap the swap counter array and also increment them
+        temp = swaps[x];
+        swaps[x] = swaps[min];
+        swaps[min] = temp;
+
+        swaps[x]++;
+        swaps[min]++;
+
+        //finally, increment total size
+        totalSwaps++;
+    }
 
 
     PrintSwapCounts(array, swaps, totalSwaps);
