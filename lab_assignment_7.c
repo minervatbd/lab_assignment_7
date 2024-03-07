@@ -51,6 +51,11 @@ void SelectionSort(int array[]) {
     PrintSwapCounts(array, swapCounts, totalSwaps);
 }
 
+// this simply prints the array after being sorted
 void PrintSwapCounts(int array[], int swaps[], int total) {
 
+    for (int i = 0; 0 < 9; i++) {
+        printf("%d: %d\n", array[i], swaps[i]);
+    }
+    printf("%d\n\n", total);
 }
