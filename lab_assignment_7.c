@@ -43,21 +43,27 @@ int main() {
 void BubbleSort(int array[]) {
 
     int totalSwaps = 0;
-    int swapCounts[] = {0,0,0,0,0,0,0,0,0};
+    int swaps[9];
 
+    entry* swapsCounts = CreateEntryArray(array);
 
+    
 
-    PrintSwapCounts(array, swapCounts, totalSwaps);
+    PrintSwapCounts(array, swaps, totalSwaps);
 }
 
 void SelectionSort(int array[]) {
 
     int totalSwaps = 0;
-    int swapCounts[] = {0,0,0,0,0,0,0,0,0};
+    int swaps[9];
+
+    entry* swapsCounts = CreateEntryArray(array);
 
 
 
-    PrintSwapCounts(array, swapCounts, totalSwaps);
+
+
+    PrintSwapCounts(array, swaps, totalSwaps);
 }
 
 // this simply prints the array after being sorted
