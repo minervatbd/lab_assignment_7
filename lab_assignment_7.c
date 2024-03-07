@@ -17,6 +17,9 @@ void SelectionSort(int array[]);
 // prototype for the function we'll use for the output
 void PrintSwapCounts(int array[], int swaps[], int total);
 
+// prototype for entry swapping in int arrays function
+int Swap(int array[], int a, int b);
+
 // prototype for entry array creation function
 entry* CreateEntryArray(int array[]);
 
@@ -43,7 +46,7 @@ int main() {
 void BubbleSort(int array[]) {
 
     int totalSwaps = 0;
-    int swaps[9];
+    int swaps[] = {0,0,0,0,0,0,0,0,0};
 
     entry* swapsCounts = CreateEntryArray(array);
 
@@ -55,7 +58,7 @@ void BubbleSort(int array[]) {
 void SelectionSort(int array[]) {
 
     int totalSwaps = 0;
-    int swaps[9];
+    int swaps[] = {0,0,0,0,0,0,0,0,0};
 
     entry* swapsCounts = CreateEntryArray(array);
 
@@ -73,6 +76,14 @@ void PrintSwapCounts(int array[], int swaps[], int total) {
         printf("%d: %d\n", array[i], swaps[i]);
     }
     printf("%d\n\n", total);
+}
+
+// def for swap function, where a and b are valid indices in an array
+int Swap(int array[], int a, int b) {
+    int temp = array[a];
+    array[a] = array[b];
+    array[b] = temp;
+    return array;
 }
 
 // function for entry array creation
