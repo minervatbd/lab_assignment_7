@@ -70,9 +70,6 @@ void SelectionSort(int array[]) {
     int totalSwaps = 0;
     int swaps[] = {0,0,0,0,0,0,0,0,0};
 
-    entry* swapsCounts = CreateEntryArray(array);
-
-
 
 
 
@@ -82,7 +79,7 @@ void SelectionSort(int array[]) {
 // this simply prints the array after being sorted
 void PrintSwapCounts(int array[], int swaps[], int total) {
 
-    for (int i = 0; 0 < 9; i++) {
+    for (int i = 0; i < 9; i++) {
         printf("%d: %d\n", array[i], swaps[i]);
     }
     printf("%d\n\n", total);
