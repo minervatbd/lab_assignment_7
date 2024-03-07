@@ -17,12 +17,6 @@ void SelectionSort(int array[]);
 // prototype for the function we'll use for the output
 void PrintSwapCounts(int array[], int swaps[], int total);
 
-// prototype for entry swapping in int arrays function
-int Swap(int array[], int a, int b);
-
-// prototype for entry array creation function
-entry* CreateEntryArray(int array[]);
-
 int main() {
 
     // arrays
@@ -35,9 +29,9 @@ int main() {
     BubbleSort(array2);
 
     printf("array1 Selection Sort:\n");
-    SelectionSort(array1);
+    //SelectionSort(array1);
     printf("array1 Selection Sort:\n");
-    SelectionSort(array2);
+    //SelectionSort(array2);
     
 
 }
@@ -46,12 +40,28 @@ int main() {
 void BubbleSort(int array[]) {
 
     int totalSwaps = 0;
-    int swaps[] = {0,0,0,0,0,0,0,0,0};
+    int swaps[9] = {0,0,0,0,0,0,0,0,0};
 
-    entry* swapsCounts = CreateEntryArray(array);
-
-    
-
+    int x, y, temp;
+    for (x = 0; x < 8; x++) {
+        for (y = 0; y < 8-x; y++) {
+            // check if current entry is greater than next entry, if so, begin swapping procedure
+            if (array[y] > array[y+1]) {
+                // swap array itself
+                temp = array[y];
+                array[y] = array[y+1];
+                array[y+1] = temp;
+                
+                // swap swap counter array, and add one for the incrementation
+                temp = swaps[y];
+                swaps[y] = swaps[y+1] + 1;
+                swaps[y+1] = temp + 1;
+                
+                // finally, increment total swap count
+                totalSwaps++;
+            }
+        }
+    }
     PrintSwapCounts(array, swaps, totalSwaps);
 }
 
@@ -76,22 +86,4 @@ void PrintSwapCounts(int array[], int swaps[], int total) {
         printf("%d: %d\n", array[i], swaps[i]);
     }
     printf("%d\n\n", total);
-}
-
-// def for swap function, where a and b are valid indices in an array
-int Swap(int array[], int a, int b) {
-    int temp = array[a];
-    array[a] = array[b];
-    array[b] = temp;
-    return array;
-}
-
-// function for entry array creation
-entry* CreateEntryArray(int array[]) {
-    entry* newArray = malloc(sizeof(entry)*9);
-    for (int i = 0; i < 9; i++) {
-        newArray[i].data = array[i];
-        newArray[i].swaps = 0;
-    }
-    return newArray;
 }
