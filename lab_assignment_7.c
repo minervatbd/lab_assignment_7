@@ -4,12 +4,21 @@
 #include <string.h>
 #include <ctype.h>
 
+// this entry type will allow us to track all swaps properly
+typedef struct Entry {
+    int data;
+    int swaps;
+} entry;
+
 // prototypes for both sort functions.
 void BubbleSort(int array[]);
 void SelectionSort(int array[]);
 
 // prototype for the function we'll use for the output
 void PrintSwapCounts(int array[], int swaps[], int total);
+
+// prototype for entry array creation function
+entry* CreateEntryArray(int array[]);
 
 int main() {
 
@@ -58,4 +67,14 @@ void PrintSwapCounts(int array[], int swaps[], int total) {
         printf("%d: %d\n", array[i], swaps[i]);
     }
     printf("%d\n\n", total);
+}
+
+// function for entry array creation
+entry* CreateEntryArray(int array[]) {
+    entry* newArray = malloc(sizeof(entry)*9);
+    for (int i = 0; i < 9; i++) {
+        newArray[i].data = array[i];
+        newArray[i].swaps = 0;
+    }
+    return newArray;
 }
