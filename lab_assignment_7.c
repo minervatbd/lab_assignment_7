@@ -28,10 +28,14 @@ int main() {
     printf("array2 Bubble Sort:\n");
     BubbleSort(array2);
 
+    // this is necessary because we need to use unsorted arrays
+    int array1again[] = {97,16,45,63,13,22,7,58,72};
+    int array2again[] = {90,80,70,60,50,40,30,20,10};
+
     printf("array1 Selection Sort:\n");
-    SelectionSort(array1);
+    SelectionSort(array1again);
     printf("array2 Selection Sort:\n");
-    SelectionSort(array2);
+    SelectionSort(array2again);
     
 
 }
@@ -91,11 +95,18 @@ void SelectionSort(int array[]) {
         swaps[x] = swaps[min];
         swaps[min] = temp;
 
-        swaps[x]++;
-        swaps[min]++;
+        // only increment if it actually swapped stuff
+        if (x != min) {
+            swaps[min]++;
+            swaps[x]++;
+            //finally, increment total size
+            totalSwaps++;
+        }
+        
 
-        //finally, increment total size
-        totalSwaps++;
+
+        
+        
     }
 
 
